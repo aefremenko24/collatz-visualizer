@@ -5,12 +5,12 @@ import matplotlib.animation as animation
 from matplotlib import style
 
 def run():
-  open('example.txt', 'w').close()
+  open('data.txt', 'w').close()
   ani = animation.FuncAnimation(fig, animate, interval=20)
   plt.show()
 
 def animate(i):
-  graph_data = open('example.txt', 'r').read()
+  graph_data = open('data.txt', 'r').read()
 
   global iteration, n, current
 
@@ -32,7 +32,7 @@ def animate(i):
   ax1.set_ylabel('Value')
 
   if n != 1:
-    with open('example.txt', 'a') as f:
+    with open('data.txt', 'a') as f:
       f.write('\n' + '{},{}'.format(iteration, n))
     iteration += 1
     n = next_num(n)
@@ -43,7 +43,7 @@ def animate(i):
     current += 1
     ax1.clear()
     n = current
-    with open('example.txt', 'w') as f:
+    with open('data.txt', 'w') as f:
       f.write('{},{}'.format(0, current))
 
 def next_num(n):
